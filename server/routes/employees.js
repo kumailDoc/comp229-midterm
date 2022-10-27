@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
       return console.error(err);
     } else {
       res.render("employees/index", {
-        title: "Emplyoees",
+        title: "Employees",
         employees: employees,
       });
     }
@@ -23,17 +23,13 @@ router.get("/", (req, res, next) => {
 
 //  GET the Employee Details page in order to add a new employee
 router.get("/add", (req, res, next) => {
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+  
   res.render('employees/add', {title: 'Add Employee'})
 });
 
 // POST process the Employee Details page and create a new Employee - CREATE
 router.post("/add", (req, res, next) => {
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+  
   let newEmployee = employee({
     "Employeeid": req.body.Employeeid,
     "Employeename": req.body.Employeename,
@@ -51,16 +47,15 @@ router.post("/add", (req, res, next) => {
     else
     {
       // refresh employee list
-      res.redirect('employees'); //index
+      //'employees' might be 'index'
+      res.redirect('/employees/index.ejs');
     }
   });
 });
 
 // GET the Employee Details page in order to edit an existing Employee
-router.get("/:id", (req, res, next) => {
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+router.get("/edit/:id", (req, res, next) => {
+  
   let id = req.params.id;
 
   employee.findById(id, (err, employeeToEdit) =>{
@@ -78,10 +73,8 @@ router.get("/:id", (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post("/:id", (req, res, next) => {
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+router.post("/edit/:id", (req, res, next) => {
+
   let id = req.params.id
 
   let updatedEmployee = employee({
@@ -108,10 +101,8 @@ router.post("/:id", (req, res, next) => {
 });
 
 // GET - process the delete by specific employeename
-router.get("/delete", (req, res, next) => {
-  /*****************
-   * ADD CODE HERE *
-   *****************/
+router.get("/delete/:id", (req, res, next) => {
+  
   let id = req.params.id;
 
   employee.remove({_id: id}, (err) => {
@@ -125,7 +116,7 @@ router.get("/delete", (req, res, next) => {
       // refresh the employees
       res.redirect('employees');
     }
-  })
+  });
 });
 
 module.exports = router;
