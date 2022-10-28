@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
       return console.error(err);
     } else {
       res.render("employees/index", {
-        title: "Emplyoees",
+        title: "Employees",
         employees: employees,
       });
     }
@@ -66,7 +66,7 @@ router.get('/details/:id', (req, res, next) => {
     else
     {
       // show the edit (details) value
-      res.render('/employees/details', {title: 'Edit Employee', employee: employeeToEdit})
+      res.render("employees/details", {title: 'Edit Employee', employees: employeeToEdit})
     }
   });
 });
