@@ -67,13 +67,13 @@ router.get("/edit/:id", (req, res, next) => {
     else
     {
       // show the edit value
-      res.render('employees/details', {title: 'Edit Employee', employee: employeeToEdit})
+      res.render('/employees/details.ejs', {title: 'Edit Employee', employee: employeeToEdit})
     }
   });
 });
 
 // POST - process the information passed from the details form and update the document
-router.post("/edit/:id", (req, res, next) => {
+router.post("/details/:id", (req, res, next) => {
 
   let id = req.params.id
 
@@ -113,8 +113,8 @@ router.get("/delete/:id", (req, res, next) => {
     }
     else
     {
-      // refresh the employees
-      res.redirect('employees');
+      // refresh employees
+      res.redirect('/index.js');
     }
   });
 });

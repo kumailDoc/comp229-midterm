@@ -35,13 +35,13 @@
               <td class="text-center"><%= employees[count].Designation %></td>
               <td class="text-center"><%= employees[count].Salary %></td>
               <td class="text-center">
-                <a href="/emp/edit/<%= employees[count]._id %>" class="btn btn-primary">
-                <i class="fas fa-pencil alt"></i> Edit </a>
+                <a href="/employees/details/<%= employees[count]._id %>" class="btn btn-primary">
+                <i class="fas fa-pencil-alt"></i> Edit </a>
               </td>
-              <!--<td class="text-center">
-                <a href="/emp/delete/<%= employees[count]._id %>" class="btn btn-warning btn-sm">
-                <i class="fas fa-trash"></i> Delete </a>
-              </td>-->
+              <td class="text-center">
+                <a href="/employees/delete/<%= employees[count]._id %>" class="btn btn-warning btn-sm">
+                <i class="fas fa-trash-alt"></i> Delete </a>
+              </td>
             </tr>
             <% } %>
           </tbody>
@@ -52,8 +52,8 @@
       <!-- ADD the DELETE BUTTON HERE -->
       <!-- ------------------------ -->
 
-      <a href="" class="btn btn-warning btn-sm">
-        <i class="fas fa-trash"></i> Delete</a>
+      <!--<a href="" class="btn btn-warning btn-sm">
+        <i class="fas fa-trash"></i> Delete</a>-->
     </main>
     
       <div class="col-md-offset-1 col-md-10 text-center">
