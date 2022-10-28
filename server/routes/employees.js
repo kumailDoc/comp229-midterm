@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
       return console.error(err);
     } else {
       res.render("employees/index", {
-        title: "Employees",
+        title: "Emplyoees",
         employees: employees,
       });
     }
@@ -29,7 +29,7 @@ router.get("/add", (req, res, next) => {
 
 // POST process the Employee Details page and create a new Employee - CREATE
 router.post("/add", (req, res, next) => {
-  
+
   let newEmployee = employee({
     "Employeeid": req.body.Employeeid,
     "Employeename": req.body.Employeename,
@@ -47,15 +47,14 @@ router.post("/add", (req, res, next) => {
     else
     {
       // refresh employee list
-      //'employees' might be 'index'
-      res.redirect('/employees/index.ejs');
+      res.redirect('/employees');
     }
   });
 });
 
 // GET the Employee Details page in order to edit an existing Employee
-router.get("/edit/:id", (req, res, next) => {
-  
+router.get('/details/:id', (req, res, next) => {
+
   let id = req.params.id;
 
   employee.findById(id, (err, employeeToEdit) =>{
@@ -66,14 +65,14 @@ router.get("/edit/:id", (req, res, next) => {
     }
     else
     {
-      // show the edit value
-      res.render('/employees/details.ejs', {title: 'Edit Employee', employee: employeeToEdit})
+      // show the edit (details) value
+      res.render('/employees/details', {title: 'Edit Employee', employee: employeeToEdit})
     }
   });
 });
 
 // POST - process the information passed from the details form and update the document
-router.post("/details/:id", (req, res, next) => {
+router.post('/details/:id', (req, res, next) => {
 
   let id = req.params.id
 
@@ -101,8 +100,8 @@ router.post("/details/:id", (req, res, next) => {
 });
 
 // GET - process the delete by specific employeename
-router.get("/delete/:id", (req, res, next) => {
-  
+router.get('/delete/:id', (req, res, next) => {
+
   let id = req.params.id;
 
   employee.remove({_id: id}, (err) => {
@@ -113,8 +112,8 @@ router.get("/delete/:id", (req, res, next) => {
     }
     else
     {
-      // refresh employees
-      res.redirect('/index.js');
+      // refresh the employees
+      res.redirect('/employees');
     }
   });
 });
