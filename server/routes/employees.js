@@ -1,4 +1,4 @@
-
+//Created by Kumail Mohammed Husain Doctor (301193171) for COMP229
 // modules required for routing
 let express = require("express");
 let router = express.Router();
@@ -27,7 +27,7 @@ router.get("/add", (req, res, next) => {
   
   res.render('employees/add', {title: 'Add Employee'})
 });
-//Created by Kumail Mohammed Husain Doctor (301193171) for COMP229
+
 // POST process the Employee Details page and create a new Employee - CREATE
 router.post("/add", (req, res, next) => {
 
